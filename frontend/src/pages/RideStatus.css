@@ -1,0 +1,78 @@
+/* RideStatus.css */
+
+.ride-background {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #222; /* fallback */
+  background-image: linear-gradient(135deg, #1c1f38 0%, #2d2f51 100%);
+  font-family: 'Inter', Arial, sans-serif;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.ride-glass {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2rem 2.5rem;
+  width: 420px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.ride-header {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #ffd9c2;
+  letter-spacing: 1.2px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.ride-info p {
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+.ride-info strong {
+  color: #ffd9c2;
+}
+
+.error-message {
+  color: #cb2d3e;
+  font-weight: 500;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.loading-message {
+  color: #ffd9c2;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* Optional back button style */
+.back-button {
+  margin-top: 1.5rem;
+  padding: 0.6em 1.2em;
+  border-radius: 32px;
+  border: none;
+  background-color: #ffd9c2;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #444;
+  cursor: pointer;
+  transition: background 0.2s;
+  align-self: center;
+  box-shadow: 0 2px 20px rgba(255, 217, 194, 0.15);
+}
+.back-button:hover {
+  background-color: #ffc9ae;
+}

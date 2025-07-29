@@ -1,0 +1,150 @@
+/* RiderDashboard.css */
+
+.dashboard-background {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #222; /* fallback color */
+  background-image: linear-gradient(135deg, #1c1f38 0%, #2d2f51 100%);
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.dashboard-glass {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2rem 2.5rem;
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.dashboard-title {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #ffd9c2;
+  letter-spacing: 1.2px;
+}
+
+.logout-button {
+  background: none;
+  color: #ffd9c2;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-size: 1rem;
+  padding: 0;
+}
+.logout-button:hover {
+  color: #ffc4a3;
+}
+
+.label {
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #ffd9c2;
+}
+
+.dashboard-input {
+  padding: 0.6em 1em;
+  margin-bottom: 1em;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 1em;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  color: #222;
+  transition: background 0.2s;
+}
+
+.dashboard-input:focus {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.request-button {
+  padding: 0.7em 1em;
+  margin-bottom: 1.5em;
+  border-radius: 32px;
+  border: none;
+  background-color: #ffd9c2;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #444;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 20px rgba(255, 217, 194, 0.15);
+  width: 100%;
+}
+
+.request-button:disabled {
+  background-color: #b2b2b2;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.request-button:hover:not(:disabled) {
+  background-color: #ffc9ae;
+}
+
+.error-message {
+  color: #cb2d3e;
+  font-weight: 500;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Current ride info panel */
+.current-ride {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(31, 38, 135, 0.25);
+  margin-top: 2rem;
+}
+
+.current-ride h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #ffd9c2;
+  font-weight: 700;
+  text-align: center;
+}
+
+.current-ride p {
+  margin: 0.25rem 0;
+  font-weight: 500;
+}
+
+.current-ride strong {
+  color: #fff3e0;
+}
+
+.ride-link {
+  display: block;
+  margin-top: 1rem;
+  text-align: center;
+  color: #ffd9c2;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.ride-link:hover {
+  color: #ffc9ae;
+}
