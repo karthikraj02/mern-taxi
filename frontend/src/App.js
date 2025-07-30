@@ -1,6 +1,12 @@
 // /frontend/src/App.js
+
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -8,63 +14,66 @@ import RiderDashboard from './pages/RiderDashboard';
 import DriverDashboard from './pages/DriverDashboard';
 import RideStatus from './pages/RideStatus';
 
+function PrivateRoute({ user, children }) {
+  return user ? children : <Navigate to="/login" replace />;
+}
+
 function App() {
-  // Initialize user from localStorage to persist login across refreshes
+  // Persist logged‐in user across refreshes
   const [user, setUser] = useState(() => {
-    const storedUser = localStorage.getItem('user');
-    return storedUser ? JSON.parse(storedUser) : null;
+    const stored = localStorage.getItem('user');
+    return stored ? JSON.parse(stored) : null;
   });
 
-  // Sync user state to localStorage whenever it changes
+  // Keep localStorage in sync
   useEffect(() => {
     if (user) {
       localStorage.setItem('user', JSON.stringify(user));
     } else {
       localStorage.removeItem('user');
-      localStorage.removeItem('token'); // Also clear token on logout
+      localStorage.removeItem('token');
     }
   }, [user]);
-
-  // Protected route wrapper component
-  const PrivateRoute = ({ children }) => {
-    return user ? children : <Navigate to="/login" />;
-  };
 
   return (
     <Router>
       <Routes>
+        {/* Public pages */}
         <Route path="/login" element={<Login onLogin={setUser} />} />
         <Route path="/register" element={<Register />} />
 
+        {/* Rider Dashboard (protected) */}
         <Route
           path="/rider"
           element={
-            <PrivateRoute>
+            <PrivateRoute user={user}>
               <RiderDashboard user={user} />
             </PrivateRoute>
           }
         />
 
+        {/* Driver Dashboard (protected) */}
         <Route
           path="/driver"
           element={
-            <PrivateRoute>
+            <PrivateRoute user={user}>
               <DriverDashboard user={user} />
             </PrivateRoute>
           }
         />
 
+        {/* Ride Status page (protected) */}
         <Route
           path="/ride/:rideId"
           element={
-            <PrivateRoute>
-              <RideStatus />
+            <PrivateRoute user={user}>
+              <RideStatus user={user} />
             </PrivateRoute>
           }
         />
 
-        {/* Redirect any unknown paths to login */}
-        <Route path="*" element={<Navigate to="/login" />} />
+        {/* Catch‐all → Login */}
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </Router>
   );
